@@ -1,17 +1,17 @@
 import requests
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup		#Kütüpheneleri tanımlıyoruz.
  
-u = input("Lütfen url giriniz: \n")
-req = requests.get(u)
-soup = BeautifulSoup(req.text, "lxml")
-soup = soup.find_all("p")
-file = open('wordlist', 'w')
-
-for i in soup:
-	al = str(i.text)
-	al = al.split()
+u = input("Lütfen url giriniz: \n")	#Wordlist oluşturulacak site url'si... 	
+req = requests.get(u)			#url'e get isteği atıyoruz.
+soup = BeautifulSoup(req.text, "lxml")	#BeautifulSoup ile sayfadaki html parsellerini alıyoruz.
+soup = soup.find_all("p")		#find_all ile tüm p etiketlerini alıyoruz.
+file = open('wordlist', 'w')		#wordlist dosyasını açıyoruz(yoksa oluşturuyoruz).
+for i in soup:				#soup'da bulunan p etiketlerini for döngüsü ile tek tek alıyoruz.
+	al = str(i.text)		#".text" ile taglerden arındırıyoruz.
+	al = al.split()			#temiz içeriği parçalıyoruz
 	for j in al:
-		file.write(j + "\n")
+		file.write(j + "\n")	#parçaları açmış olduğumuz wordlist dosyasına yazıyoruz.
 
-file.close() 
-print("wordlist başarılı bir şekilde oluşturuldu")
+file.close() 				#dosyayı kapatıyoruz.
+print("wordlist başarılı bir şekilde oluşturuldu.")
+
