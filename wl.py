@@ -15,3 +15,6 @@ for i in soup:				#soup'da bulunan p etiketlerini for döngüsü ile tek tek al�
 file.close() 				#dosyayı kapatıyoruz.
 print("wordlist başarılı bir şekilde oluşturuldu.")
 
+"""
+author: Yunus Emre DEMİR
+"""
